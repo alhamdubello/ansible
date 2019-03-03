@@ -1,0 +1,5 @@
+srv2 ansible_host=srv2.home.local
+
+
+[labservers]
+srv[1:2].home.local

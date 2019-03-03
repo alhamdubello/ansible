@@ -1,0 +1,12 @@
+---
+all:
+  hosts:
+    srv2.home.local
+  children:
+    httpd:
+      hosts:
+        srv3.home.local
+        srv4.home.local
+    labservers:
+      hosts:
+        srv[1:2].home.local
