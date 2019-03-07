@@ -1,0 +1,16 @@
+---
+- hosts: srv2.home.local
+  tasks:
+
+    - name: create a file
+      file:
+        path: /tmp/testfile
+        state: touch
+      register: output
+    - name: Output debug info
+      debug: msg="debug info is {{ output }}"
+    - name: Edit file from output variable
+      lineinfile:
+        path: /tmp/testfile
+        line: "{{ output.uid }}"
+

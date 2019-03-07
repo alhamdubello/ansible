@@ -1,0 +1,15 @@
+---
+- hosts: srv2.home.local
+  become: yes
+  handlers:
+    - name: restart apache
+      service: name="httpd" state="restarted"
+      listen: "restart web"
+  tasks:
+    - name: Change config httpd
+      replace:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^DocumentRoot.*$'
+        replace: 'DocumentRoot "/var/www"'
+        backup: yes
+      notify: "restart web"

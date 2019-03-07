@@ -1,0 +1,13 @@
+---
+- hosts: srv2.home.local
+  tasks:
+
+    - name: copy a file
+      copy:
+        src: testfile
+        dest: /home/user/testregister
+        mode: 400
+      register: var
+    - name: Output debug info
+      debug: msg="debug info is {{ var }}"
+
